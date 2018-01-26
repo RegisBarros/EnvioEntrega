@@ -26,7 +26,6 @@ namespace SampleImportExportExcel
                 var manager = new PropertyManager<Manufacturer>(properties);
 
                 var iRow = 2;
-                var setSeName = properties.Any(p => p.PropertyName == "SeName");
 
                 while (true)
                 {
