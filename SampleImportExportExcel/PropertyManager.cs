@@ -2,6 +2,7 @@
 using OfficeOpenXml.Style;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SampleImportExportExcel
 {
@@ -44,6 +45,22 @@ namespace SampleImportExportExcel
                 var cell = worksheet.Cells[row, prop.PropertyOrderPosition + cellOffset];
 
                 cell.Value = prop.GetProperty(CurrentObject);
+            }
+        }
+
+        public PropertyByName<T>[] GetProperties
+        {
+            get { return _properties.Values.ToArray(); }
+        }
+
+        public void ReadFromXlsx(ExcelWorksheet worksheet, int row, int cellOffset = 0)
+        {
+            if (worksheet == null || worksheet.Cells == null)
+                return;
+
+            foreach (var prop in _properties.Values)
+            {
+                prop.PropertyValue = worksheet.Cells[row, prop.PropertyOrderPosition + cellOffset].Value;
             }
         }
     }

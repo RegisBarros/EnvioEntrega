@@ -16,8 +16,16 @@ namespace SampleImportExportExcel
                      .AddJsonFile("appsettings.json")
                      .Build();
 
-            var exportManger = new ExportManager();
-            var bytes = exportManger.ExportManufacturersToXlsx(Manufacturer.GetManufacturers());
+            string directory = Directory.GetCurrentDirectory();
+            string filePath = Path.Combine(directory, "Files/sheetTest.xlsx");
+
+            Stream file = File.OpenRead(filePath);
+
+            var importManager = new ImportManager();
+            IEnumerable<Manufacturer> manufacturers = importManager.ImportManufacturersFromXlsx(file);
+
+            var exportManager = new ExportManager();
+            var bytes = exportManager.ExportManufacturersToXlsx(Manufacturer.GetManufacturers());
 
             SendEmail(bytes);
 
