@@ -25,12 +25,12 @@ namespace SampleImportExportExcel
         {
             using (var stream = new MemoryStream())
             {
-                using (var xlPackage = new ExcelPackage(stream))
+                using (var package = new ExcelPackage(stream))
                 {
                     //xlPackage.DebugMode = true; 
 
-                    var worksheet = xlPackage.Workbook.Worksheets.Add(typeof(T).Name);
-                    var fWorksheet = xlPackage.Workbook.Worksheets.Add("DataForFilters");
+                    var worksheet = package.Workbook.Worksheets.Add(typeof(T).Name);
+                    var fWorksheet = package.Workbook.Worksheets.Add("DataForFilters");
                     fWorksheet.Hidden = eWorkSheetHidden.VeryHidden;
 
                     //create Headers and format them 
@@ -44,7 +44,7 @@ namespace SampleImportExportExcel
                         manager.WriteToXlsx(worksheet, row++, fWorksheet: fWorksheet);
                     }
 
-                    xlPackage.Save();
+                    package.Save();
                 }
 
                 return stream.ToArray();
