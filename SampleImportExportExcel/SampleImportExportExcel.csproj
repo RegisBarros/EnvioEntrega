@@ -11,4 +11,10 @@
     <PackageReference Include="Saraiva.Framework.Services" Version="1.0.22" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Files\entregas.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -11,23 +11,19 @@ namespace SampleImportExportExcel
     {
         static void Main(string[] args)
         {
-            var configuration = new ConfigurationBuilder()
-                      .SetBasePath(Directory.GetCurrentDirectory())
-                     .AddJsonFile("appsettings.json")
-                     .Build();
+            //var configuration = new ConfigurationBuilder()
+            //          .SetBasePath(Directory.GetCurrentDirectory())
+            //         .AddJsonFile("appsettings.json")
+            //         .Build();
 
             string directory = Directory.GetCurrentDirectory();
-            string filePath = Path.Combine(directory, "Files/sheetTest.xlsx");
+            string filePath = Path.Combine(directory, "Files/entregas.xlsx");
 
             Stream file = File.OpenRead(filePath);
 
             var importManager = new ImportManager();
-            IEnumerable<Manufacturer> manufacturers = importManager.ImportManufacturersFromXlsx(file);
+            IEnumerable<Order> orders = importManager.ImportOrdersFromXlsx(file);
 
-            var exportManager = new ExportManager();
-            var bytes = exportManager.ExportManufacturersToXlsx(Manufacturer.GetManufacturers());
-
-            SendEmail(bytes);
 
             Console.ReadKey();
         }
