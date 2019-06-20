@@ -7,8 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="EPPlus.Core" Version="1.5.4" />
-    <PackageReference Include="Saraiva.Framework.Common-Core" Version="1.0.23" />
-    <PackageReference Include="Saraiva.Framework.Services" Version="1.0.22" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
 
   <ItemGroup>

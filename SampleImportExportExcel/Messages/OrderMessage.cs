@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SampleImportExportExcel.Messages
 {
@@ -19,7 +17,20 @@ namespace SampleImportExportExcel.Messages
                 Numero = order.Pedido,
                 NotaFiscal = new NotaFiscal
                 {
-                    ChaveAcesso
+                    ChaveAcesso = "JN344225297BR",
+                    Serie = "1010",
+                    Numero = "102030",
+                    CaminhoUrl = "http://saraiva.com.br",
+                    Data = DateTime.Now,
+                    Skus = new string[] { order.SkuLojista }
+                },
+                Rastreio = new Rastreio
+                {
+                    URL = "https://correiosrastrear.com",
+                    Numero = order.Rastreio,
+                    Transportadora = "Saraiva",
+                    DataTracking = DateTime.Now,
+                    SkusLojista = new string[] { order.SkuLojista }
                 }
             };
         }
@@ -46,9 +57,7 @@ namespace SampleImportExportExcel.Messages
     }
 }
 
-
-
-{
+/*{
   "Numero": "JN344225297BR",
   "Rastreio": {
     "URL": "https://correiosrastrear.com",
@@ -69,4 +78,4 @@ namespace SampleImportExportExcel.Messages
       "182587"
     ]
   }
-}
+} */

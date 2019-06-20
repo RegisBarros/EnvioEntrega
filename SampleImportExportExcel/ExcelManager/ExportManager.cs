@@ -9,17 +9,17 @@ namespace SampleImportExportExcel
 {
     public class ExportManager
     {
-        public byte[] ExportManufacturersToXlsx(IEnumerable<Manufacturer> manufacturers)
-        {
-            var properties = new[]
-            {
-                new PropertyByName<Manufacturer>("Id", p => p.Id),
-                new PropertyByName<Manufacturer>("Name", p => p.Name),
-                new PropertyByName<Manufacturer>("Industry", p => p.Industry),
-            };
+        // public byte[] ExportManufacturersToXlsx(IEnumerable<Manufacturer> manufacturers)
+        // {
+        //     var properties = new[]
+        //     {
+        //         new PropertyByName<Manufacturer>("Id", p => p.Id),
+        //         new PropertyByName<Manufacturer>("Name", p => p.Name),
+        //         new PropertyByName<Manufacturer>("Industry", p => p.Industry),
+        //     };
 
-            return ExportToXlsx(properties, manufacturers);
-        }
+        //     return ExportToXlsx(properties, manufacturers);
+        // }
 
         protected virtual byte[] ExportToXlsx<T>(PropertyByName<T>[] properties, IEnumerable<T> itemsToExport)
         {
