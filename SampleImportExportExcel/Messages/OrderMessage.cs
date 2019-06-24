@@ -6,6 +6,8 @@ namespace SampleImportExportExcel.Messages
     {
         public string Numero { get; set; }
 
+        public string Pedido { get; set; }
+
         public Rastreio Rastreio { get; set; }
 
         public NotaFiscal NotaFiscal { get; set; }
@@ -14,7 +16,8 @@ namespace SampleImportExportExcel.Messages
         {
             return new OrderMessage
             {
-                Numero = order.Pedido,
+                Numero = order.Rastreio,
+
                 NotaFiscal = new NotaFiscal
                 {
                     ChaveAcesso = "JN344225297BR",
@@ -26,6 +29,8 @@ namespace SampleImportExportExcel.Messages
                 },
                 Rastreio = new Rastreio
                 {
+
+                    IdPedido = order.Pedido,
                     URL = "https://correiosrastrear.com",
                     Numero = order.Rastreio,
                     Transportadora = "Saraiva",
@@ -38,6 +43,9 @@ namespace SampleImportExportExcel.Messages
 
     public class Rastreio
     {
+
+        public string IdPedido { get; set; }
+
         public string URL { get; set; }
 
         public string Numero { get; set; }
